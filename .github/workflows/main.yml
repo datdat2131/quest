@@ -1,0 +1,41 @@
+name: Build AstraxQuest
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+
+      - name: Verify Java and Maven
+        run: |
+          java -version
+          mvn -version
+
+      - name: Build AstraxQuest
+        run: mvn --batch-mode --no-transfer-progress clean package
+
+      - name: Upload AstraxQuest JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: AstraxQuest-JAR
+          path: target/*.jar
+          if-no-files-found: error

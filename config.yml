@@ -1,0 +1,83 @@
+# ===========================================================================
+#  AstraxQuest - cau hinh chinh
+#  Sau khi sua, dung /quest admin reload (rieng muc "database" can khoi dong lai server)
+# ===========================================================================
+
+database:
+  type: SQLITE                 # SQLITE (mac dinh) hoac MYSQL
+  sqlite-file: data.db         # nam trong plugins/AstraxQuest/
+  mysql:
+    host: localhost
+    port: 3306
+    database: astraxquest
+    username: root
+    password: ""
+    pool-size: 4               # so ket noi toi da (1-16)
+    properties: "useSSL=false&characterEncoding=utf8&autoReconnect=true"
+
+# Mui gio dung de tinh moc reset
+timezone: "Asia/Ho_Chi_Minh"
+
+# Thoi gian lam moi nhiem vu
+reset:
+  daily-hour: 0                # gio reset moi ngay (0-23)
+  weekly-day: MONDAY           # ngay bat dau tuan: MONDAY..SUNDAY
+  weekly-hour: 0               # gio reset hang tuan
+  monthly-day: 1               # ngay reset hang thang (1-28)
+
+# Cap do Quest: exp can de len cap n+1 = base + growth * (n - 1)
+levels:
+  base: 100
+  growth: 50
+  max-level: 100
+
+progress:
+  flush-interval-seconds: 30   # chu ky ghi tien do xuong DB (hoan thanh luon duoc ghi ngay)
+  ignored-gamemodes: [CREATIVE, SPECTATOR]
+  disabled-worlds: []          # the gioi khong tinh tien do, vd: [world_creative]
+  action-bar: true             # hien tien do tren action bar
+
+rewards:
+  full-inventory: DROP         # DROP: roi xuong dat | PENDING: luu lai, giao khi vao server / co cho trong
+  claim-cooldown-ms: 400       # chong bam lien tuc trong GUI
+  sounds:                      # "none" de tat
+    complete: "entity.player.levelup"
+    claim: "entity.experience_orb.pickup"
+    level-up: "ui.toast.challenge_complete"
+
+anti-cheat:
+  placed-blocks:
+    enabled: true              # khoi do nguoi choi dat khong tinh vao nhiem vu dao
+    max-tracked: 200000
+    ttl-minutes: 1440
+    place-cooldown-seconds: 3  # dat lai cung vi tri trong thoi gian nay khong tinh PLACE_BLOCK
+  ignored-spawn-reasons:       # quai sinh tu cac nguon nay khong tinh KILL_MOB
+    - SPAWNER
+    - SPAWNER_EGG
+    - DISPENSE_EGG
+    - EGG
+    - BUILD_SNOWMAN
+    - BUILD_IRONGOLEM
+    - BUILD_WITHER
+  pvp:
+    victim-cooldown-seconds: 60    # giet cung 1 nguoi: phai cach nhau toi thieu
+    max-kills-per-victim: 3        # toi da bao nhieu lan tinh / cua so thoi gian
+    window-minutes: 60
+    block-same-ip: true            # khong tinh neu 2 nguoi cung IP
+    min-victim-playtime-minutes: 0  # >0: nan nhan phai choi du so phut nay (chong acc phu)
+  activity:
+    afk-seconds: 120               # dung yen/khong xoay camera qua lau => khong tinh di bo/thoi gian choi
+    walk-allow-vehicle: false
+    walk-max-blocks-per-sample: 60 # moi 5 giay; vuot qua coi la dich chuyen, bo qua
+
+integrations:
+  placeholderapi: true
+  economy:
+    enabled: true              # dung Vault (EssentialsX, CMI, XConomy...)
+    fallback-command: ""       # neu khong co Vault, vd: "eco give {player} {amount}"
+  guild:
+    # Plugin Guild co expansion PlaceholderAPI -> dat placeholder tra ve ten guild.
+    # Hoac dang ky bang code: AstraxQuestAPI.setGuildProvider(player -> ...)
+    placeholder: "%guild_name%"
+    none-values: ["", "none", "n/a", "null", "-", "no guild", "khong co", "không có", "chưa có", "chua co"]
+    refresh-seconds: 30

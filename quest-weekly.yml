@@ -1,0 +1,38 @@
+# =====================================================================
+#  NHIEM VU TUAN  -  reset moi tuan (ngay/gio reset o config.yml)
+#  Cach them / sua giong file daily.yml (copy 1 khoi, doi id, sua so).
+# =====================================================================
+settings:
+  category: WEEKLY
+  enabled: true
+  display-name: "Nhiệm vụ tuần"
+  reset: WEEKLY
+
+quests:
+  tuan_dao_block:
+    name: "&7Đào 1000 block"
+    description: ["Đào 1000 block bất kỳ trong tuần."]
+    icon: DIAMOND_PICKAXE
+    type: BREAK_BLOCK
+    amount: 1000
+    rewards: { money: 4000, tokens: 5, exp: 150 }
+
+  tuan_di_chuyen:
+    name: "&aDi chuyển 10000 block"
+    description: ["Đi bộ 10000 block trong tuần."]
+    icon: COMPASS
+    type: WALK
+    amount: 10000
+    rewards: { money: 4000, tokens: 5, exp: 150 }
+
+  tuan_kill_10_nguoi:
+    name: "&4Hạ gục 10 người chơi"
+    description: ["Giết 10 người chơi trong tuần."]
+    icon: NETHERITE_SWORD
+    type: KILL_PLAYER
+    amount: 10
+    rewards:
+      money: 8000
+      tokens: 10
+      exp: 300
+      items: ["DIAMOND:3"]

@@ -1,0 +1,53 @@
+# ===========================================================================
+#  Bridge su kien cua plugin ngoai -> tien do nhiem vu (khong can code).
+#  AstraxQuest goi cac getter cua class Event bang reflection khi su kien xay ra.
+#
+#  Truong:
+#    enabled      : true/false
+#    plugin       : ten plugin so huu class event (de nap dung classloader)
+#    event        : ten day du cua class Event
+#    type         : loai muc tieu (OPEN_BOXMINE, AUCTION_SELL, AUCTION_BUY, GUILD_DONATE, CUSTOM, hoac loai co san)
+#    player       : chuoi getter lay nguoi choi (Player/UUID/ten), cho phep chuoi "getUser.getPlayer"
+#    target       : getter lay muc tieu (vd id hop). De trong => dung fixed-target
+#    amount       : getter tra ve so luong. De trong => dung fixed-amount
+#    fixed-target : muc tieu co dinh (mac dinh ANY)
+#    fixed-amount : so luong co dinh (mac dinh 1)
+#
+#  Cac ten class duoi day chi la VI DU - hay thay bang class Event thuc te cua plugin ban dung
+#  (xem tai lieu / API cua plugin do). Neu plugin khong co Event, goi API cua AstraxQuest tu ben ho:
+#     AstraxQuestAPI.addProgress(player, QuestType.OPEN_BOXMINE, "ten_hop", 1);
+#  hoac dung lenh mo phong: /quest admin trigger <nguoi_choi> OPEN_BOXMINE <hop> 1
+# ===========================================================================
+bridges:
+  boxmine-open:
+    enabled: false
+    plugin: "BoxMine"
+    event: "com.example.boxmine.api.BoxOpenEvent"
+    type: OPEN_BOXMINE
+    player: "getPlayer"
+    target: "getBoxId"
+    amount: ""
+  auction-sell:
+    enabled: false
+    plugin: "AuctionHouse"
+    event: "com.example.auction.api.AuctionListEvent"
+    type: AUCTION_SELL
+    player: "getSeller"
+    target: ""
+    fixed-target: "ANY"
+    amount: ""
+  auction-buy:
+    enabled: false
+    plugin: "AuctionHouse"
+    event: "com.example.auction.api.AuctionPurchaseEvent"
+    type: AUCTION_BUY
+    player: "getBuyer"
+    target: ""
+  guild-donate:
+    enabled: false
+    plugin: "Guilds"
+    event: "com.example.guild.api.GuildDonateEvent"
+    type: GUILD_DONATE
+    player: "getPlayer"
+    target: ""
+    amount: "getAmount"

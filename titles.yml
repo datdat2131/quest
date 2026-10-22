@@ -1,0 +1,26 @@
+# Danh hieu. id dung trong rewards.title cua nhiem vu va lenh /quest admin title.
+titles:
+  tho_mo:
+    display: "&8[&6Thợ Mỏ&8]"
+    description: "Hoàn thành chuỗi nhiệm vụ khai thác."
+    material: IRON_PICKAXE
+  nguoi_tap_su:
+    display: "&8[&aNgười Tập Sự&8]"
+    description: "Hoàn thành chương đầu của cốt truyện."
+    material: WOODEN_SWORD
+  anh_hung:
+    display: "&8[&#FFD700Anh Hùng&8]"
+    description: "Hoàn thành toàn bộ cốt truyện chương 1."
+    material: GOLDEN_HELMET
+  chien_than:
+    display: "&8[&cChiến Thần&8]"
+    description: "Chiến thắng trong các nhiệm vụ PvP."
+    material: DIAMOND_SWORD
+  thanh_vien_guild:
+    display: "&8[&bTinh Anh Guild&8]"
+    description: "Cùng Guild hoàn thành nhiệm vụ tuần."
+    material: WHITE_BANNER
+  halloween_2026:
+    display: "&8[&6Halloween 2026&8]"
+    description: "Tham gia sự kiện Halloween 2026."
+    material: JACK_O_LANTERN

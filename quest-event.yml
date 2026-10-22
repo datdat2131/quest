@@ -1,0 +1,34 @@
+# Nhiem vu su kien: chi hien/ghi tien do trong thoi gian su kien (events.yml).
+settings:
+  category: EVENT
+  enabled: false     # DANG TAT mac dinh. Doi thanh true de bat muc nay
+  display-name: "Sự kiện"
+  reset: EVENT
+
+quests:
+  halloween_pumpkins:
+    event: halloween
+    name: "&6Thu hoạch bí ngô"
+    description: ["Đập bí ngô để dọa ma."]
+    icon: PUMPKIN
+    type: BREAK_BLOCK
+    targets: [PUMPKIN, CARVED_PUMPKIN]
+    amount: 50
+    rewards: { money: 2000, tokens: 5, exp: 100 }
+  halloween_monsters:
+    event: halloween
+    name: "&5Săn ma đêm Halloween"
+    description: ["Tiêu diệt quái vật trong đêm hội."]
+    icon: JACK_O_LANTERN
+    type: KILL_MOB
+    amount: 100
+    rewards: { money: 3000, tokens: 8, exp: 150, title: halloween_2026, items: ["PUMPKIN_PIE:16"] }
+  tet_firework:
+    event: tet_2027
+    name: "&cPháo hoa đón Tết"
+    description: ["Chế tạo pháo hoa."]
+    icon: FIREWORK_ROCKET
+    type: CRAFT
+    targets: [FIREWORK_ROCKET]
+    amount: 64
+    rewards: { money: 3000, tokens: 6, exp: 120 }

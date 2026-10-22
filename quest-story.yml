@@ -1,0 +1,81 @@
+# Cot truyen: lam theo chuoi (requires). Chi lam mot lan (reset: NEVER).
+settings:
+  category: STORY
+  enabled: false     # DANG TAT mac dinh. Doi thanh true de bat muc nay
+  display-name: "Cốt truyện"
+  reset: NEVER
+
+quests:
+  story_1_start:
+    chapter: "Chương 1: Khởi đầu"
+    name: "&a1. Tay trắng"
+    description: ["Mọi hành trình bắt đầu từ gỗ.", "Chặt 10 khúc gỗ."]
+    icon: OAK_LOG
+    type: BREAK_BLOCK
+    targets: ["*_LOG"]
+    amount: 10
+    order: 1
+    rewards: { money: 200, tokens: 1, exp: 30, items: ["BREAD:5"] }
+  story_2_tools:
+    chapter: "Chương 1: Khởi đầu"
+    name: "&a2. Công cụ đầu tiên"
+    description: ["Chế tạo cúp gỗ hoặc đá."]
+    icon: STONE_PICKAXE
+    type: CRAFT
+    targets: [WOODEN_PICKAXE, STONE_PICKAXE]
+    amount: 1
+    requires: [story_1_start]
+    order: 2
+    rewards: { money: 300, tokens: 1, exp: 40 }
+  story_3_stone:
+    chapter: "Chương 1: Khởi đầu"
+    name: "&a3. Xuống hầm"
+    description: ["Khai thác 64 khối đá."]
+    icon: COBBLESTONE
+    type: BREAK_BLOCK
+    targets: [STONE, DEEPSLATE, COBBLESTONE]
+    amount: 64
+    requires: [story_2_tools]
+    order: 3
+    rewards: { money: 500, tokens: 2, exp: 60, title: nguoi_tap_su }
+  story_4_night:
+    chapter: "Chương 2: Đêm dài"
+    name: "&e4. Sống sót qua đêm"
+    description: ["Hạ gục 15 quái vật."]
+    icon: IRON_SWORD
+    type: KILL_MOB
+    amount: 15
+    min-level: 2
+    requires: [story_3_stone]
+    order: 4
+    rewards: { money: 800, tokens: 3, exp: 90 }
+  story_5_iron:
+    chapter: "Chương 2: Đêm dài"
+    name: "&e5. Thợ rèn"
+    description: ["Nung 32 thỏi sắt."]
+    icon: IRON_INGOT
+    type: SMELT
+    targets: [IRON_INGOT]
+    amount: 32
+    requires: [story_4_night]
+    order: 5
+    rewards: { money: 1200, tokens: 4, exp: 120, items: ["IRON_BLOCK:2"] }
+  story_6_hero:
+    chapter: "Chương 3: Anh hùng"
+    name: "&6&l6. Kim cương của anh hùng"
+    description: ["Tìm 5 quặng kim cương."]
+    icon: DIAMOND
+    type: BREAK_BLOCK
+    targets: [DIAMOND_ORE, DEEPSLATE_DIAMOND_ORE]
+    amount: 5
+    min-level: 3
+    requires: [story_5_iron]
+    hidden: true            # an cho den khi du dieu kien
+    order: 6
+    rewards:
+      money: 3000
+      tokens: 10
+      exp: 300
+      title: anh_hung
+      items:
+        - { material: DIAMOND_PICKAXE, amount: 1, name: "&6Cúp Anh Hùng", glow: true }

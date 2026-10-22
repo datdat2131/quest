@@ -1,0 +1,31 @@
+# Nhiem vu Guild: tien do DUNG CHUNG cho ca guild; moi thanh vien tu nhan thuong 1 lan.
+# Can xac dinh guild: integrations.guild.placeholder trong config.yml (PlaceholderAPI) hoac AstraxQuestAPI.setGuildProvider.
+settings:
+  category: GUILD
+  enabled: false     # DANG TAT mac dinh. Doi thanh true de bat muc nay
+  display-name: "Nhiệm vụ Guild"
+  reset: WEEKLY
+
+quests:
+  guild_miners:
+    name: "&6Guild đào mỏ"
+    description: ["Cả Guild cùng khai thác quặng."]
+    icon: IRON_PICKAXE
+    type: BREAK_BLOCK
+    targets: ["*_ORE"]
+    amount: 2000
+    rewards: { money: 4000, tokens: 8, exp: 150 }
+  guild_hunters:
+    name: "&cGuild săn quái"
+    description: ["Cả Guild tiêu diệt quái vật."]
+    icon: DIAMOND_SWORD
+    type: KILL_MOB
+    amount: 1000
+    rewards: { money: 4000, tokens: 8, exp: 150, title: thanh_vien_guild }
+  guild_donate:
+    name: "&aQuỹ Guild"
+    description: ["Đóng góp quỹ Guild (cần bridge/API)."]
+    icon: GOLD_BLOCK
+    type: GUILD_DONATE
+    amount: 50000
+    rewards: { money: 6000, tokens: 12, exp: 200 }

@@ -1,0 +1,61 @@
+# =====================================================================
+#  NHIEM VU NGAY  -  reset moi ngay (gio reset chinh o config.yml)
+#  Sua file nay roi go  /quest admin reload  trong game.
+#
+#  >>> THEM NHIEM VU MOI: copy nguyen 1 khoi ben duoi, doi ten id (khong dau, khong cach)
+#  >>> SUA PHAN THUONG:  sua dong "rewards:"
+#
+#  Cac loai (type) hay dung:
+#    BREAK_BLOCK  dao block        targets: [STONE, DIRT]  (bo trong = bat ky block nao)
+#    KILL_MOB     giet quai        targets: [ZOMBIE]       (bo trong = bat ky quai nao)
+#    KILL_PLAYER  giet nguoi choi
+#    WALK         di chuyen (so block)
+#    PLAYTIME     thoi gian choi (so phut)
+#    FISH  CRAFT  SMELT  PLACE_BLOCK  HARVEST ...  (xem README)
+#
+#  rewards:  money = tien | tokens = Astrax Token | exp = Quest EXP
+#            items = vat pham   ["DIAMOND:2", "BREAD:16"]
+#            commands = lenh console  ["give {player} diamond 1"]
+# =====================================================================
+settings:
+  category: DAILY
+  enabled: true
+  display-name: "Nhiệm vụ ngày"
+  reset: DAILY
+
+quests:
+  dao_block:
+    name: "&7Đào block"
+    description: ["Đào 100 block bất kỳ."]
+    icon: IRON_PICKAXE
+    type: BREAK_BLOCK
+    amount: 100
+    rewards: { money: 500, tokens: 1, exp: 20 }
+
+  di_chuyen:
+    name: "&aDi chuyển"
+    description: ["Đi bộ 1000 block."]
+    icon: LEATHER_BOOTS
+    type: WALK
+    amount: 1000
+    rewards: { money: 500, tokens: 1, exp: 20 }
+
+  diet_quai:
+    name: "&cDiệt quái"
+    description: ["Tiêu diệt 20 quái vật."]
+    icon: IRON_SWORD
+    type: KILL_MOB
+    amount: 20
+    rewards: { money: 800, tokens: 1, exp: 30 }
+
+  kill_3_nguoi:
+    name: "&4Hạ gục 3 người chơi"
+    description: ["Giết 3 người chơi khác."]
+    icon: DIAMOND_SWORD
+    type: KILL_PLAYER
+    amount: 3
+    rewards:
+      money: 1500
+      tokens: 3
+      exp: 50
+      items: ["GOLDEN_APPLE:2"]

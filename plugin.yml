@@ -1,0 +1,24 @@
+name: AstraxQuest
+version: '${project.version}'
+main: vn.astrax.quest.AstraxQuestPlugin
+api-version: '1.21'
+author: Astrax
+description: He thong nhiem vu ngay, tuan, cot truyen, Guild, PvP va su kien
+softdepend: [Vault, PlaceholderAPI, BoxMine, Guilds, GuildPlugin, AuctionHouse, Essentials, EssentialsX, CMI, XConomy]
+
+commands:
+  quest:
+    description: Mo he thong nhiem vu AstraxQuest
+    usage: /quest [daily|weekly|story|guild|pvp|event|profile|tokens|top|title|claim|claimall|help]
+    aliases: [aq, astraxquest, nhiemvu, nv]
+
+permissions:
+  astraxquest.use:
+    description: Su dung he thong nhiem vu
+    default: true
+  astraxquest.top:
+    description: Xem bang xep hang cap Quest
+    default: true
+  astraxquest.admin:
+    description: Quan tri AstraxQuest
+    default: op
